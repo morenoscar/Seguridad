@@ -16,6 +16,8 @@ public class NuevoUsuario extends javax.swing.JFrame {
      */
     public NuevoUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
