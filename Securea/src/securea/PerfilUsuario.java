@@ -42,13 +42,17 @@ public class PerfilUsuario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Custodio = new javax.swing.JButton();
         Usuarios = new javax.swing.JButton();
+        jImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Luna", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 28)); // NOI18N
         jLabel1.setText("Perfil del Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 29, -1, -1));
 
         nombre.setEditable(false);
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 97, 148, -1));
 
         apellido.setEditable(false);
         apellido.addActionListener(new java.awt.event.ActionListener() {
@@ -56,12 +60,15 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 apellidoActionPerformed(evt);
             }
         });
+        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 97, 173, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Nombre");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 74, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Apellido");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 74, 83, -1));
 
         jButtonSalir.setText("Salir");
         jButtonSalir.setActionCommand("JButton1");
@@ -70,6 +77,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 38, -1, -1));
 
         RegMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         RegMed.setText("Registros Médicos");
@@ -78,6 +86,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 RegMedActionPerformed(evt);
             }
         });
+        getContentPane().add(RegMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 215, -1, -1));
 
         RegFina.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         RegFina.setText("Registro Financiero");
@@ -86,14 +95,18 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 RegFinaActionPerformed(evt);
             }
         });
+        getContentPane().add(RegFina, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 215, -1, -1));
 
         Grupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grupos.setText("Grupos");
+        getContentPane().add(Grupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 316, 119, -1));
 
         email.setEditable(false);
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 162, 333, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Email");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 141, -1, -1));
 
         Custodio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Custodio.setText("Custodio");
@@ -102,6 +115,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 CustodioActionPerformed(evt);
             }
         });
+        getContentPane().add(Custodio, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 262, 154, -1));
 
         Usuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Usuarios.setText("Usuarios");
@@ -110,77 +124,10 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 UsuariosActionPerformed(evt);
             }
         });
+        getContentPane().add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 262, 161, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(Custodio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(RegMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(6, 6, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(RegFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonSalir))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(Grupos, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 50, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonSalir))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RegMed)
-                    .addComponent(RegFina))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Custodio)
-                    .addComponent(Usuarios))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(Grupos)
-                .addGap(45, 45, 45))
-        );
+        jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -257,6 +204,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField email;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
