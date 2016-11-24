@@ -31,6 +31,7 @@ public class RegMedico extends javax.swing.JFrame {
      * Creates new form RegMedico
      */
     public RegMedico(String username, Connection conex) {
+        initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
         this.conex = conex;
@@ -39,10 +40,22 @@ public class RegMedico extends javax.swing.JFrame {
             ps = conex.prepareStatement("select * from RMEDICO where USERN = '" + username + "'");
             rs = ps.executeQuery();
             if (rs.next()) {
+                System.out.println(rs.getString("ESTATURA"));
                 estatura.setText(rs.getString("ESTATURA"));
                 peso.setText(rs.getString("PESO"));
                 rh.setText(rs.getString("RH"));
                 alergias.setText(rs.getString("ALERGIAS"));
+            }
+               else {
+                Statement st = conex.createStatement();
+                int aux= Otros.consecutivoMedico();
+                st.executeUpdate("insert into RMEDICO values ("+aux+",0,0,'',0,'" + username + "')");
+                conex.commit();
+                estatura.setText("0");
+                peso.setText("0");
+                rh.setText("");
+                alergias.setText("0");
+          
             }
         } catch (SQLException ex) {
             Logger.getLogger(PerfilUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,7 +63,7 @@ public class RegMedico extends javax.swing.JFrame {
     }
 
     private RegMedico() {
-        initComponents();
+        
     }
 
     /**
@@ -100,21 +113,13 @@ public class RegMedico extends javax.swing.JFrame {
 
         jLabel4.setText("Alergias");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 223, -1, -1));
-
-        rh.setEditable(false);
         getContentPane().add(rh, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 174, 110, -1));
-
-        peso.setEditable(false);
         getContentPane().add(peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 125, 110, -1));
-
-        estatura.setEditable(false);
         getContentPane().add(estatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 81, 110, -1));
-
-        alergias.setEditable(false);
         getContentPane().add(alergias, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 218, 110, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 270, 300));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 280, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,9 +129,8 @@ public class RegMedico extends javax.swing.JFrame {
         if (peso.getText().equals("")) {
             try {
                 Statement st = conex.createStatement();
-                st.executeUpdate("insert into RMEDICO values (" + Otros.consecutivoMedico() + "," + Integer.parseInt(peso.getText())
-                        + "," + Integer.parseInt(estatura.getText()) + "," + rh.getText() + "," + Integer.parseInt(alergias.getText()) + "," + username + ")");
-                
+                int aux= Otros.consecutivoMedico();
+                st.executeUpdate("insert into RMEDICO values ("+aux+",0,0,'',0,'" + username + "')");
                 conex.commit();
                 JOptionPane.showMessageDialog(new JFrame(), "Registro Médico creado exitosamente", "Exito", JOptionPane.PLAIN_MESSAGE);
             } catch (SQLException ex) {

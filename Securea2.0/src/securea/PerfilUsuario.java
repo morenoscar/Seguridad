@@ -155,7 +155,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
         getContentPane().add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 390));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

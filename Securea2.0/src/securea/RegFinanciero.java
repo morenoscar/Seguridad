@@ -44,6 +44,16 @@ public class RegFinanciero extends javax.swing.JFrame {
                 pasivos.setText(rs.getString("PASIVOS"));
                 corriente.setText(rs.getString("CAHORROS"));
                 credito.setText(rs.getString("CREDITO"));
+            } else {
+                Statement st = conex.createStatement();
+                int aux= Otros.consecutivofinanciero();
+                st.executeUpdate("insert into RFINANCIERO values ("+aux+",0,0,0,0,'" + username + "')");
+                conex.commit();
+                 activos.setText(rs.getString("0"));
+                pasivos.setText(rs.getString("0"));
+                corriente.setText(rs.getString("0"));
+                credito.setText(rs.getString("0"));
+          
             }
         } catch (SQLException ex) {
             Logger.getLogger(PerfilUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,9 +140,8 @@ public class RegFinanciero extends javax.swing.JFrame {
         if (activos.getText().equals("")) {
             try {
                 Statement st = conex.createStatement();
-                st.executeUpdate("insert into RFINANCIERO values (" + Otros.consecutivofinanciero() + "," + Integer.parseInt(activos.getText())
-                        + "," + Integer.parseInt(pasivos.getText()) + "," + Integer.parseInt(corriente.getText()) + "," + Integer.parseInt(credito.getText()) + "," + username + ")");
-                //st.executeUpdate("insert into RMEDICO values (0,0,0,'o+',0,'oscar')");
+               int aux= Otros.consecutivofinanciero();
+                st.executeUpdate("insert into RFINANCIERO values ("+aux+",0,0,0,0,'" + username + "')");
                 conex.commit();
                 JOptionPane.showMessageDialog(new JFrame(), "Registro Financiero creado exitosamente", "Exito", JOptionPane.PLAIN_MESSAGE);
             } catch (SQLException ex) {
