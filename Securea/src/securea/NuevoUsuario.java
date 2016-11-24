@@ -5,19 +5,42 @@
  */
 package securea;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import utils.HashGenerationException;
+
 /**
  *
  * @author Oscar Moreno & Carlos Quimbay
  */
 public class NuevoUsuario extends javax.swing.JFrame {
 
+    private Connection conex;
+    private Map<String, String> usuarios;
+    private static PreparedStatement ps = null;
+
     /**
      * Creates new form NuevoUsuario
      */
-    public NuevoUsuario() {
+    public NuevoUsuario(Connection conex, Map<String, String> user) {
+        System.out.println("entró");
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        usuarios = user;
+        this.conex = conex;
+    }
+
+    private NuevoUsuario() {
     }
 
     /**
@@ -37,15 +60,15 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jNombreField1 = new javax.swing.JTextField();
-        jNombreField2 = new javax.swing.JTextField();
-        jApellidoField1 = new javax.swing.JTextField();
-        jApellidoField2 = new javax.swing.JTextField();
-        jeMailField = new javax.swing.JTextField();
-        jUserField = new javax.swing.JTextField();
-        jpsswdField = new javax.swing.JTextField();
-        jButtonAdd = new javax.swing.JButton();
-        jButtonCancel = new javax.swing.JButton();
+        jNombre = new javax.swing.JTextField();
+        jNombre2 = new javax.swing.JTextField();
+        jApellido1 = new javax.swing.JTextField();
+        jApellido2 = new javax.swing.JTextField();
+        jeMail = new javax.swing.JTextField();
+        jUser = new javax.swing.JTextField();
+        bAgregar = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
+        jPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,13 +89,18 @@ public class NuevoUsuario extends javax.swing.JFrame {
 
         jLabel8.setText("Contraseña");
 
-        jButtonAdd.setBackground(new java.awt.Color(51, 153, 255));
-        jButtonAdd.setText("Agregar");
-
-        jButtonCancel.setText("Cancelar");
-        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+        bAgregar.setBackground(new java.awt.Color(51, 153, 255));
+        bAgregar.setText("Agregar");
+        bAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelActionPerformed(evt);
+                bAgregarActionPerformed(evt);
+            }
+        });
+
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
             }
         });
 
@@ -94,19 +122,18 @@ public class NuevoUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonCancel)
+                                .addComponent(bCancelar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonAdd))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jNombreField1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(jNombreField2)
-                                .addComponent(jApellidoField1)
-                                .addComponent(jApellidoField2)
-                                .addComponent(jeMailField)
-                                .addComponent(jUserField)
-                                .addComponent(jpsswdField)))))
+                                .addComponent(bAgregar))
+                            .addComponent(jNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jNombre2)
+                            .addComponent(jApellido1)
+                            .addComponent(jApellido2)
+                            .addComponent(jeMail)
+                            .addComponent(jUser)
+                            .addComponent(jPasswordField))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,49 +144,102 @@ public class NuevoUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jNombreField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jNombreField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jApellidoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jApellidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jeMailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jeMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jpsswdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdd)
-                    .addComponent(jButtonCancel))
+                    .addComponent(bAgregar)
+                    .addComponent(bCancelar))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new Principal().setVisible(true);
-    }//GEN-LAST:event_jButtonCancelActionPerformed
+    }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void bAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarActionPerformed
+        // TODO add your handling code here:
+        String pass = "";
+        pass = new String(jPasswordField.getPassword());
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        System.out.println(pass.matches(pattern));
+        if (jNombre.getText()
+                .equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Debe indicar el Nombre del usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (jApellido1.getText()
+                .equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Debe indicar el Apellido del usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (jeMail.getText()
+                .equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Debe indicar el Correo del usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (jUser.getText()
+                .equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Debe indicar el Username", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usuarios.containsKey(jUser.getText())) {
+            JOptionPane.showMessageDialog(new JFrame(), "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.equals(
+                "")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Debe indicar el PASSWORD del usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!pass.matches(pattern)) {
+            JOptionPane.showMessageDialog(new JFrame(), "La contraseña no cumple con las siguientes restricciones: \n 8 caracteres\n +1 Mayúscula \n +1 Minúscula \n +1 Caracter especial", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!usuarios.containsKey(jUser.getText())) {
+            try {
+                pass = utils.HashGeneratorUtils.generateSHA256(new String(jPasswordField.getPassword()));
+                ps = conex.prepareStatement("insert into SEGURIDAD values (?,?,?,?,?,?,?,?)");
+                ps.setString(1, jUser.getText());
+                ps.setString(2, pass);
+                ps.setString(3, jNombre.getText());
+                ps.setString(4, jNombre2.getText());
+                ps.setString(5, jApellido1.getText());
+                ps.setString(6, jApellido2.getText());
+                ps.setString(7, jeMail.getText());
+                ps.setString(8, (new Timestamp(System.currentTimeMillis())).toString());
+                ps.executeUpdate();
+                conex.commit();
+                usuarios.put(jUser.getText(), pass);
+                JOptionPane.showMessageDialog(new JFrame(), "Usuario credo exitosamente", "Exito", JOptionPane.PLAIN_MESSAGE);
+                this.dispose();
+                new Principal().setVisible(true);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(new JFrame(), "Error al crear usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (HashGenerationException ex) {
+                Logger.getLogger(NuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Usuario ya esta registrado en el sistema", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,16 +255,24 @@ public class NuevoUsuario extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -197,10 +285,10 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jApellidoField1;
-    private javax.swing.JTextField jApellidoField2;
-    private javax.swing.JButton jButtonAdd;
-    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton bAgregar;
+    private javax.swing.JButton bCancelar;
+    private static javax.swing.JTextField jApellido1;
+    private static javax.swing.JTextField jApellido2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -209,10 +297,10 @@ public class NuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jNombreField1;
-    private javax.swing.JTextField jNombreField2;
-    private javax.swing.JTextField jUserField;
-    private javax.swing.JTextField jeMailField;
-    private javax.swing.JTextField jpsswdField;
+    private static javax.swing.JTextField jNombre;
+    private static javax.swing.JTextField jNombre2;
+    private static javax.swing.JPasswordField jPasswordField;
+    private static javax.swing.JTextField jUser;
+    private static javax.swing.JTextField jeMail;
     // End of variables declaration//GEN-END:variables
 }
