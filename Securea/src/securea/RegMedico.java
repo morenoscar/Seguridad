@@ -28,7 +28,7 @@ public class RegMedico extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelRegMed = new javax.swing.JLabel();
-        jButOK = new javax.swing.JButton();
+        jButSalvar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,13 +46,13 @@ public class RegMedico extends javax.swing.JFrame {
         jLabelRegMed.setText("Registro Medico");
         getContentPane().add(jLabelRegMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 26, -1, -1));
 
-        jButOK.setText("OK");
-        jButOK.addActionListener(new java.awt.event.ActionListener() {
+        jButSalvar.setText("Salvar");
+        jButSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButOKActionPerformed(evt);
+                jButSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 250, -1, -1));
+        getContentPane().add(jButSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 250, -1, -1));
 
         jLabel1.setText("Estatura");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 86, -1, -1));
@@ -84,10 +84,10 @@ public class RegMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButOKActionPerformed
+    private void jButSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButSalvarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButOKActionPerformed
+    }//GEN-LAST:event_jButSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,7 +125,7 @@ public class RegMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButOK;
+    private javax.swing.JButton jButSalvar;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
