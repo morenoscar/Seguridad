@@ -16,6 +16,8 @@ public class RegMedico extends javax.swing.JFrame {
      */
     public RegMedico() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -52,7 +54,7 @@ public class RegMedico extends javax.swing.JFrame {
                 jButSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 250, -1, -1));
+        getContentPane().add(jButSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
 
         jLabel1.setText("Estatura");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 86, -1, -1));
@@ -79,7 +81,7 @@ public class RegMedico extends javax.swing.JFrame {
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 218, 50, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 340, 300));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 240, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

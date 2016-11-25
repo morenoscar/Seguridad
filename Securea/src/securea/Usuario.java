@@ -30,6 +30,7 @@ public class Usuario extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableUsers = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jButOK = new javax.swing.JButton();
         jImage = new javax.swing.JLabel();
 
@@ -64,11 +65,19 @@ public class Usuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableUsers);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 570, 450));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 550, 220));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Usuarios");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 24, -1, -1));
+
+        jButton1.setText("Consultar perfil");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         jButOK.setText("OK");
         jButOK.addActionListener(new java.awt.event.ActionListener() {
@@ -76,10 +85,10 @@ public class Usuario extends javax.swing.JFrame {
                 jButOKActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
+        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 620, 550));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 610, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,6 +97,10 @@ public class Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButOKActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +140,7 @@ public class Usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButOK;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;

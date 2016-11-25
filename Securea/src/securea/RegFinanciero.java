@@ -16,6 +16,8 @@ public class RegFinanciero extends javax.swing.JFrame {
      */
     public RegFinanciero() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -37,7 +39,7 @@ public class RegFinanciero extends javax.swing.JFrame {
         jTextPasivos = new javax.swing.JTextField();
         jTextCCorr = new javax.swing.JTextField();
         jTextCredito = new javax.swing.JTextField();
-        jImage = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,7 +54,7 @@ public class RegFinanciero extends javax.swing.JFrame {
                 jButOKActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 263, -1, -1));
+        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         jLabel2.setText("Activos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 82, -1, -1));
@@ -65,19 +67,19 @@ public class RegFinanciero extends javax.swing.JFrame {
 
         jLabel5.setText("Tarjeta de Credito");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 214, -1, -1));
-        getContentPane().add(jTextActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 77, 101, -1));
-        getContentPane().add(jTextPasivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 121, 101, -1));
-        getContentPane().add(jTextCCorr, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 165, 101, -1));
+        getContentPane().add(jTextActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 101, -1));
+        getContentPane().add(jTextPasivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 101, -1));
+        getContentPane().add(jTextCCorr, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 101, -1));
 
         jTextCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCreditoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 209, 101, -1));
+        getContentPane().add(jTextCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 101, -1));
 
-        jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 330));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,12 +131,12 @@ public class RegFinanciero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButOK;
-    private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextActivos;
     private javax.swing.JTextField jTextCCorr;
     private javax.swing.JTextField jTextCredito;

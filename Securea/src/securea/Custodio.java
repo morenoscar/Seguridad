@@ -30,10 +30,10 @@ public class Custodio extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTAllUsers = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTCustodios = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButOK = new javax.swing.JButton();
         jImage = new javax.swing.JLabel();
@@ -47,21 +47,59 @@ public class Custodio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
-        jTAllUsers.setEditable(false);
-        jTAllUsers.setColumns(20);
-        jTAllUsers.setRows(5);
-        jScrollPane1.setViewportView(jTAllUsers);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(455, 400));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 68, -1, 413));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        jTCustodios.setEditable(false);
-        jTCustodios.setColumns(20);
-        jTCustodios.setRows(5);
-        jScrollPane2.setViewportView(jTCustodios);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setSize(new java.awt.Dimension(450, 65));
+        jScrollPane3.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 68, -1, 413));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 270, 420));
+
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(455, 400));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setSize(new java.awt.Dimension(450, 65));
+        jScrollPane4.setViewportView(jTable2);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 420));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Custodio");
@@ -73,11 +111,11 @@ public class Custodio extends javax.swing.JFrame {
                 jButOKActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 521, -1, -1));
+        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, -1, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
         jImage.setToolTipText("");
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 580));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,9 +169,9 @@ public class Custodio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTAllUsers;
-    private javax.swing.JTextArea jTCustodios;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
