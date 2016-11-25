@@ -14,6 +14,9 @@ public class PerfilUsuario extends javax.swing.JFrame {
     /**
      * Creates new form PerfilUsuario
      */
+    
+    private String rolUsuario;
+    
     public PerfilUsuario() {
         initComponents();
         setLocationRelativeTo(null);
@@ -34,14 +37,12 @@ public class PerfilUsuario extends javax.swing.JFrame {
         apellido = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButtonSalir = new javax.swing.JButton();
+        Grupos = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         RegMed = new javax.swing.JButton();
         RegFina = new javax.swing.JButton();
-        Grupos = new javax.swing.JButton();
         email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Custodio = new javax.swing.JButton();
-        Usuarios = new javax.swing.JButton();
         jImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,14 +71,23 @@ public class PerfilUsuario extends javax.swing.JFrame {
         jLabel3.setText("Apellido");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 74, 83, -1));
 
-        jButtonSalir.setText("Salir");
-        jButtonSalir.setActionCommand("JButton1");
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+        Grupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grupos.setText("Grupos");
+        Grupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
+                GruposActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 38, -1, -1));
+        getContentPane().add(Grupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 119, -1));
+
+        Salir.setText("Salir");
+        Salir.setActionCommand("JButton1");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 38, -1, -1));
 
         RegMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         RegMed.setText("Registros Médicos");
@@ -97,10 +107,6 @@ public class PerfilUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(RegFina, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 215, -1, -1));
 
-        Grupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Grupos.setText("Grupos");
-        getContentPane().add(Grupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 316, 119, -1));
-
         email.setEditable(false);
         getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 162, 333, -1));
 
@@ -108,26 +114,8 @@ public class PerfilUsuario extends javax.swing.JFrame {
         jLabel5.setText("Email");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 141, -1, -1));
 
-        Custodio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Custodio.setText("Custodio");
-        Custodio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustodioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Custodio, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 262, 154, -1));
-
-        Usuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Usuarios.setText("Usuarios");
-        Usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuariosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 262, 161, -1));
-
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 390));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,29 +124,42 @@ public class PerfilUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
 
-    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new Principal().setVisible(true);
-    }//GEN-LAST:event_jButtonSalirActionPerformed
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void RegMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegMedActionPerformed
         // TODO add your handling code here:
+        if (rolUsuario == "Médico") {
+            setVisible(true);
+        }
+        else{
+            setVisible(false);
+        }
         new RegMedico().setVisible(true);
     }//GEN-LAST:event_RegMedActionPerformed
 
     private void RegFinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFinaActionPerformed
         // TODO add your handling code here:
+        if (rolUsuario == "Financiero") {
+            setVisible(true);
+        } else {
+            setVisible(false);
+        }
         new RegFinanciero().setVisible(true);
     }//GEN-LAST:event_RegFinaActionPerformed
 
-    private void CustodioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustodioActionPerformed
+    private void GruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GruposActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CustodioActionPerformed
-
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsuariosActionPerformed
+        if (rolUsuario == "Usuario") {
+            setVisible(true);
+        } else {
+            setVisible(false);
+        }
+        new Grupos().setVisible(true);
+    }//GEN-LAST:event_GruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,14 +197,12 @@ public class PerfilUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Custodio;
     private javax.swing.JButton Grupos;
     private javax.swing.JButton RegFina;
     private javax.swing.JButton RegMed;
-    private javax.swing.JButton Usuarios;
+    private javax.swing.JButton Salir;
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
