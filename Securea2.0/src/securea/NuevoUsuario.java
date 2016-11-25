@@ -5,6 +5,7 @@
  */
 package securea;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,9 +14,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import utils.HashGenerationException;
 
 /**
@@ -38,6 +42,27 @@ public class NuevoUsuario extends javax.swing.JFrame {
         setResizable(false);
         usuarios = user;
         this.conex = conex;
+         combo.removeAllItems();
+        combo.addItem("Usuario");
+        combo.addItem("Médico");
+        combo.addItem("Financiero");
+        
+        JCheckBox chinButton = new JCheckBox("Chin");
+    chinButton.setMnemonic(KeyEvent.VK_C); 
+    chinButton.setSelected(true);
+
+        JCheckBox glassesButton = new JCheckBox("Glasses");
+    glassesButton.setMnemonic(KeyEvent.VK_G); 
+    glassesButton.setSelected(true);
+
+        JCheckBox hairButton = new JCheckBox("Hair");
+    hairButton.setMnemonic(KeyEvent.VK_H); 
+    hairButton.setSelected(true);
+
+        JCheckBox teethButton = new JCheckBox("Teeth");
+    teethButton.setMnemonic(KeyEvent.VK_T); 
+    teethButton.setSelected(true);
+
     }
 
     private NuevoUsuario() {
@@ -59,7 +84,14 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Roles = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        Roles1 = new javax.swing.JLabel();
+        combo = new javax.swing.JComboBox<>();
         jNombre = new javax.swing.JTextField();
         jNombre2 = new javax.swing.JTextField();
         jApellido1 = new javax.swing.JTextField();
@@ -96,8 +128,39 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel7.setText("Usuario");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 265, -1, -1));
 
-        jLabel8.setText("Contraseña");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 303, -1, -1));
+        Roles.setText("Grupos");
+        getContentPane().add(Roles, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+
+        jLabel9.setText("Contraseña");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 303, -1, -1));
+
+        jCheckBox1.setText("Libros");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 90, -1));
+
+        jCheckBox2.setText("Música");
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 90, -1));
+
+        jCheckBox3.setText("Otro");
+        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 90, -1));
+
+        jCheckBox4.setText("Animales");
+        getContentPane().add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 90, -1));
+
+        Roles1.setText("Cargo");
+        getContentPane().add(Roles1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 210, -1));
         getContentPane().add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 74, 209, -1));
         getContentPane().add(jNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 112, 209, -1));
         getContentPane().add(jApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 146, 209, -1));
@@ -112,7 +175,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
                 bAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(bAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 354, -1, -1));
+        getContentPane().add(bAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, -1, -1));
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,11 +183,11 @@ public class NuevoUsuario extends javax.swing.JFrame {
                 bCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 354, -1, -1));
+        getContentPane().add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
         getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 298, 209, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 420));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,6 +251,15 @@ public class NuevoUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bAgregarActionPerformed
 
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_comboActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,10 +304,17 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Roles;
+    private javax.swing.JLabel Roles1;
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCancelar;
+    private javax.swing.JComboBox<String> combo;
     private static javax.swing.JTextField jApellido1;
     private static javax.swing.JTextField jApellido2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -244,7 +323,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private static javax.swing.JTextField jNombre;
     private static javax.swing.JTextField jNombre2;
     private static javax.swing.JPasswordField jPasswordField;

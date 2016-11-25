@@ -47,21 +47,21 @@ public class Custodio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
         jTAllUsers.setEditable(false);
         jTAllUsers.setColumns(20);
         jTAllUsers.setRows(5);
         jScrollPane1.setViewportView(jTAllUsers);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 68, -1, 413));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 68, -1, 220));
 
         jTCustodios.setEditable(false);
         jTCustodios.setColumns(20);
         jTCustodios.setRows(5);
         jScrollPane2.setViewportView(jTCustodios);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 68, -1, 413));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, 220));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Custodio");
@@ -73,11 +73,11 @@ public class Custodio extends javax.swing.JFrame {
                 jButOKActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 521, -1, -1));
+        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
         jImage.setToolTipText("");
-        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 580));
+        getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

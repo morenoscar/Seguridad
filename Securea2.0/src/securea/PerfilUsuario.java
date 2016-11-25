@@ -57,6 +57,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         apellido = new javax.swing.JTextField();
@@ -68,12 +69,19 @@ public class PerfilUsuario extends javax.swing.JFrame {
         Grupos = new javax.swing.JButton();
         email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Custodio = new javax.swing.JButton();
-        Usuarios = new javax.swing.JButton();
         jImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        grupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        grupos.setText("Grupos");
+        grupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gruposActionPerformed(evt);
+            }
+        });
+        getContentPane().add(grupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 160, -1));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 28)); // NOI18N
         jLabel1.setText("Perfil del Usuario");
@@ -88,7 +96,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 apellidoActionPerformed(evt);
             }
         });
-        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 97, 173, -1));
+        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 97, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Nombre");
@@ -96,7 +104,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Apellido");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 83, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 83, -1));
 
         jButtonSalir.setText("Salir");
         jButtonSalir.setActionCommand("JButton1");
@@ -114,7 +122,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 RegMedActionPerformed(evt);
             }
         });
-        getContentPane().add(RegMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        getContentPane().add(RegMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         RegFina.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         RegFina.setText("Registro Financiero");
@@ -123,36 +131,18 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 RegFinaActionPerformed(evt);
             }
         });
-        getContentPane().add(RegFina, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        getContentPane().add(RegFina, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
         Grupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grupos.setText("Grupos");
         getContentPane().add(Grupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 316, 119, -1));
 
         email.setEditable(false);
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 162, 333, -1));
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 333, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Email");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
-
-        Custodio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Custodio.setText("Custodio");
-        Custodio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustodioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Custodio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, -1));
-
-        Usuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Usuarios.setText("Usuarios");
-        Usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuariosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
         getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 390));
@@ -180,13 +170,9 @@ public class PerfilUsuario extends javax.swing.JFrame {
         new RegFinanciero(username,conex).setVisible(true);
     }//GEN-LAST:event_RegFinaActionPerformed
 
-    private void CustodioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustodioActionPerformed
+    private void gruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gruposActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CustodioActionPerformed
-
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsuariosActionPerformed
+    }//GEN-LAST:event_gruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,13 +210,12 @@ public class PerfilUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Custodio;
     private javax.swing.JButton Grupos;
     private javax.swing.JButton RegFina;
     private javax.swing.JButton RegMed;
-    private javax.swing.JButton Usuarios;
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField email;
+    private javax.swing.JButton grupos;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jImage;
     private javax.swing.JLabel jLabel1;

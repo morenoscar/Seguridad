@@ -64,7 +64,7 @@ public class Usuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableUsers);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 570, 450));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 570, 180));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Usuarios");
@@ -76,7 +76,7 @@ public class Usuario extends javax.swing.JFrame {
                 jButOKActionPerformed(evt);
             }
         });
-        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
+        getContentPane().add(jButOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, -1, -1));
 
         jImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/securea/abstract_bg.jpeg"))); // NOI18N
         getContentPane().add(jImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 620, 550));
